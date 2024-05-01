@@ -1,0 +1,3 @@
+**/node_modules
+teg-be/dist
+.env
