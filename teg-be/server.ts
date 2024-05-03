@@ -24,6 +24,7 @@ app.post("/rooms/new", (q, s) => rooms.newRoom(q, s)); // recibe nombre y contra
 app.get("/rooms/history", (q, s) => rooms.history(q, s));
 app.post("/rooms/settings", (q, s) => rooms.settings(q, s)); // configs, nombre y conbtra
 app.post("/rooms/color", (q, s) => rooms.color(q, s)); // no se puede repetir el color
+app.get("/rooms/leave", (q, s) => rooms.leave(q, s)); // puede recibir un parametro id (para echo a otro participante) sin nada se va la persona que lo clickeo
 app.get("/rooms/start", (q, s) => rooms.start(q, s));
 
 app.post("/games/war/init", (q, s) => games.warInit(q, s)); // Recibe codeDesde codeHasta | Al terminar borrar el "war"
