@@ -14,7 +14,6 @@ app.use(express.urlencoded({ extended: true }));
 app.get("/users/actual", (q, s) => users.actual(q, s));
 app.post("/users/setname", (q, s) => users.setName(q, s));
 
-
 // puede recibir un parametro get con el ultimo cambio, en este caso valida si hubo un cambio
 // ademas puede recibir un parametro password
 app.get("/rooms/get/:id", (q, s) => rooms.getById(q, s));

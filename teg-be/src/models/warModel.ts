@@ -1,6 +1,7 @@
 export class warModel {
-  warFigth: [] = []
+  warFigth: warFigthModel = new warFigthModel();
   winnerAtTurn: boolean = false;
+	lastUpdate: number = 0;
 }
 
 export class warFigthModel {

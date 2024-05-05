@@ -9,6 +9,7 @@ export class roomModel {
 	status: number = 0;
 	name: string = "";
 	password: string = "";
+	war: warModel = new warModel();
 	config: configModel = new configModel();
 	lastUpdate: number = 0;
 }
