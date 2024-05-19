@@ -10,6 +10,9 @@ npm run compile
 
 npm run start
 
+Para conectarse a la base de datos usando IDX correr el comando:
+ssh -L 3306:localhost:3306 root@109.199.110.212
+
 
 # Enums
 game status:

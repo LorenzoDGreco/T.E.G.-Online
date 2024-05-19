@@ -1,4 +1,4 @@
-import * as mysql from "mysql";
+import * as mysql from "mysql2";
 import * as dotenv from "dotenv";
 
 dotenv.config();
@@ -10,7 +10,7 @@ const connection = mysql.createConnection({
   database: process.env.DB_DATABASE,
 });
 
-connection.connect((err) => {
+connection.connect((err: any) => {
   if (err) {
     console.error("Error al conectar a MySQL:", err);
     return;
@@ -20,7 +20,7 @@ connection.connect((err) => {
 
 export function query(sql: string, values?: any[]): Promise<any> {
   return new Promise((resolve, reject) => {
-    connection.query(sql, values, (error, results, fields) => {
+    connection.query(sql, values, (error: any, results: any, fields: any) => {
       if (error) {
         reject(error);
       } else {
