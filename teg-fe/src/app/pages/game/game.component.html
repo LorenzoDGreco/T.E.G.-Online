@@ -1,6 +1,12 @@
 <div class="overlay">
 
-    <div class="hub-players">
+    
+
+    <div class="board order-2 col-9">
+        <img src="/assets/board.webp" alt="Mapa">
+    </div>
+    
+    <div class="hub-players order-1 col-9 d-flex">
         @for(player of players; track player.id; let index = $index){
             <div class="player" [id]="'player-'+index">
                 <p>Nombre, imagen, cartas</p>
@@ -8,11 +14,7 @@
         }
     </div>
 
-    <div class="board">
-        <img src="/assets/board.webp" alt="Mapa">
-    </div>
-    
-    <div class="chat">
+    <div class="chat order-3 col-4">
         <!-- @for (item of items; track $index) {} -->
         <div class="historic-message">
             <p>asdasdas</p>

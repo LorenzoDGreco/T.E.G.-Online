@@ -1,19 +1,26 @@
 .overlay{
     width: 100vw;
     height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    // display: flex;
+    // justify-content: center;
+    // align-items: center;
 }
 
 .player {
     background-color: aqua;
     border: solid 2px;
     padding: 2rem 10rem;
+    // width: 35%;
 }
 
 .chat {
     background-color: beige;
     border: solid 2px;
     padding: 15rem 5rem;
+    // width: 30%;
+}
+
+.board {
+    // width: 70%;
+    
 }
