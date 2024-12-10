@@ -1,0 +1,37 @@
+<div class="overlay">
+
+    <div class="hub-players">
+        @for(player of players; track player.id; let index = $index){
+            <div class="player" [id]="'player-'+index">
+                <p>Nombre, imagen, cartas</p>
+            </div>
+        }
+    </div>
+
+    <div class="board">
+        <img src="/assets/board.webp" alt="Mapa">
+    </div>
+    
+    <div class="chat">
+        <!-- @for (item of items; track $index) {} -->
+        <div class="historic-message">
+            <p>asdasdas</p>
+        </div>
+    </div>
+
+    <!-- TODO: Si popupEvent es un objeto, llamar al meotodo que controla los estados para permitir, ahora es solo un true/false -->
+    <!-- posible switch con "cosas locas"-->
+    @if (popupEvent.fight) {
+        <!-- Aparece encimado -->
+        <div class="popup-fight">
+            
+        </div>
+    }
+    @if (popupEvent.card) { 
+        <!-- Aparece encimado -->
+        <div class="popup-fight">
+            
+        </div>
+    }
+
+</div>

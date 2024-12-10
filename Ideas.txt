@@ -1,0 +1,201 @@
+https://yetem.com/wp-content/uploads/2017/06/TEG.pdf
+https://todosobreelteg.blogspot.com/2018/11/teg-de-los-negocios.html
+
+--------------------------------------- Front ---------------------------------------
+
+-Construir y guardar en memoria la partida en base al historial de la partida
+- Chat -> Puede contener el historial
+
+
+
+
+
+--------------------------------------- Back ---------------------------------------
+
+
+Se conecta mediante socker io
+cada evento del juego se envia al back
+se valida el evento, usando el nosql, si el evento es invalido devuelve un error
+se guardan los cambios editados dentro del nosql
+se guardan los eventos en un historial del SQL
+cada evento que el back recibe lo replica al resto de usaurios de la sala (incluyendo al creador del evento)
+el front procesa el historial para ir reando la partirda
+
+
+--------------------------------------- Sql ---------------------------------------
+
+usuarios
+- id
+- usuario
+- email
+- password
+- create_date
+
+usuario_partida
+- id
+- usuario_id
+- partida_id
+- esMaster
+
+partidas
+- id
+- codigo
+
+eventos
+- id
+- partida_id
+- usuario_id
+- tipo
+- parametros
+- privado
+- create_date
+
+
+--------------------------------------- eventos ---------------------------------------
+
+*Pre Creacion Lobby
+No joda pibe, lo ve solo él
+
+*In Lobby
+Cambiar color
+Ready
+Cambiar Config
+Cambiar nombre
+Cabiar password
+Ceder Master
+Empezar (solo el master can do it)
+
+*Primera ronda inicial primerisima (primera)
+asignar objetivo [privado]
+asignarLoteCartas (jugador, cartas) [backend]
+asignarOrdenJugadores (jugadores) [backend]
+//Llamar a "ColocarTropa"
+
+*In Game
+Pasar Fase (Ataque -> Movimiento -> Terminar turno) //Verificar si se gano una carta
+GanarCarta (jugador, carta) [backend]
+partidaFinalizada [backend]
+
+*En La Asignacion (inicio del turno)
+CanjearCarta (cartaA, cartaB, cartaC)
+Colocar tropa (pais, cantidad)  //tener en cuenta que puede ser un pais sin tropas reclamadas *primera ronda
+
+*In Attack
+IniciarAtaque (paisA, paisB)
+TirarDadosAtacante (cantidad)
+DadoAtacanteResultado (datoA, datoB, dadoC) [backend]
+TirarDadosDefensor 
+DadoDefensorResultado (datoA, datoB, dadoC) [backend]
+ReposicionAtaqueGanado (cantidad) 
+
+*Reposicionamiento
+reposicionar (paisA, paisB, cantidad)
+
+--------------------------------------- NoSql ---------------------------------------
+
+countrieClicked: 0
+cantTroops: 0
+chat: []
+playerPreviewSelected: 0
+viewCardPosition: 0
+
+evento -> clickeoPaisSuyo -> retorna zi -> animacion de opciones validas -> 
+
+json {
+    "game": {
+        "round": {
+            "number": 1,
+            "phase": 1,
+            "currentPlayer": 0
+        },
+        "name": "Partida TEG",
+        "config": {
+            "maxPlayers": 6,
+            "minPlayers": 2,
+            "initialTroops": 5,
+            "cardsPerPlayer": 3
+        }
+    },
+    "players": [
+        {
+            "id": 0,
+            "name": "Jugador 1",
+            "color": 1,
+            "totalTroops": 10,
+            "avaliableTroops": 10,
+            "totalCountries": 8,
+            "missions": 1,
+            "cards": [
+                {
+                    "id": 1,
+                    "shelled": false
+                },
+                {
+                    "id": 2,
+                    "shelled": false
+                }
+            ]
+        }
+    ],
+    map {
+        countries {
+            1: {
+                "troops": 3,
+                "player": 2
+            }
+
+        }
+    }
+}
+
+
+paises
+fichas
+cartas
+jugadores
+dados
+ataque
+objetivo secreto
+
+
+
+"map": {
+    "countries": [
+        {
+            "id": 1,
+            "name": "Argentina",
+            "continent": "South America",
+            "owner": 0,
+            "troops": 3,
+            "connectedTo": [2, 3]
+        },
+        {
+            "id": 2,
+            "name": "Chile",
+            "continent": "South America",
+            "owner": null,
+            "troops": 0,
+            "connectedTo": [1, 4]
+        },
+        {
+            "id": 3,
+            "name": "Brazil",
+            "continent": "South America",
+            "owner": 1,
+            "troops": 5,
+            "connectedTo": [1, 5, 6]
+        }
+    ],
+    "continents": [
+        {
+            "name": "South America",
+            "countries": [1, 2, 3, 4],
+            "bonusTroops": 2
+        },
+        {
+            "name": "North America",
+            "countries": [5, 6, 7, 8],
+            "bonusTroops": 5
+        }
+    ]
+}

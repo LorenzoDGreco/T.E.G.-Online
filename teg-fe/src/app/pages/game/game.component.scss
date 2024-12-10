@@ -1,0 +1,19 @@
+.overlay{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.player {
+    background-color: aqua;
+    border: solid 2px;
+    padding: 2rem 10rem;
+}
+
+.chat {
+    background-color: beige;
+    border: solid 2px;
+    padding: 15rem 5rem;
+}
