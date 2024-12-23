@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Socket.IO Ejemplo</title>
+        <script src="https://cdn.socket.io/4.0.0/socket.io.min.js"></script>
+    </head>
+    <body>
+        <h1>Conexión a Socket.IO</h1>
+        <style>
+            body {
+                background-color: black;
+            }
+        </style>
+        <script>
+            const socket = io("http://localhost:3000");
+            console.log("----------------------------------------------------");
+            console.log("Conectado al servidor");
+
+            socket.emit("login", {
+                token: "dfgdf",
+                username: "Loren",
+                password: "123",
+            });
+
+            socket.on("login", (data) => {
+                console.log("login:", data);
+
+                socket.emit("event", {
+                    name: "newLobby",
+                    params: "{}",
+                });
+            });
+
+            socket.on("error", (data) => {
+                console.log("error:", data);
+            });
+
+            socket.on("event", (data) => {
+                console.log("event:", data);
+                console.log("name", data.name);
+                
+                if (data.name == "joinLobby") {
+                    socket.emit("event", {
+                        name: "changeColorLobby",
+                        params: `{"color": 2}`,
+                    });
+                }
+            });
+
+            socket.on("connect", () => {
+                console.log("connected");
+            });
+        </script>
+    </body>
+</html>

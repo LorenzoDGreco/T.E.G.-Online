@@ -49,6 +49,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `username` varchar(50) NOT NULL,
   `email` varchar(255) NOT NULL,
   `password` varchar(255) DEFAULT NULL,
+  `token` varchar(500) NOT NULL,
   `create_date` datetime NOT NULL DEFAULT (now()),
   PRIMARY KEY (`id`),
   UNIQUE KEY `username` (`username`),
@@ -61,7 +62,6 @@ CREATE TABLE IF NOT EXISTS `users` (
 CREATE TABLE IF NOT EXISTS `user_game` (
   `user_id` bigint NOT NULL,
   `game_id` bigint NOT NULL,
-  `admin` tinyint(1) NOT NULL,
   PRIMARY KEY (`user_id`,`game_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 

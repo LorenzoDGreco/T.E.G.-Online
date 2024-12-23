@@ -6,8 +6,13 @@ https://todosobreelteg.blogspot.com/2018/11/teg-de-los-negocios.html
 -Construir y guardar en memoria la partida en base al historial de la partida
 - Chat -> Puede contener el historial
 
+*PAGES*
+* game
 
-
+  - Dar estilo a los mensajes
+  - Cada nuevo mensaje bajar abajo de todo
+  - añadir los botones de los paises
+  - añadir las tarjetas de jugadores
 
 
 --------------------------------------- Back ---------------------------------------
@@ -57,8 +62,8 @@ eventos
 No joda pibe, lo ve solo él
 
 *In Lobby
+Crear nueva sala
 Cambiar color
-Ready
 Cambiar Config
 Cambiar nombre
 Cabiar password
@@ -72,9 +77,10 @@ asignarOrdenJugadores (jugadores) [backend]
 //Llamar a "ColocarTropa"
 
 *In Game
-Pasar Fase (Ataque -> Movimiento -> Terminar turno) //Verificar si se gano una carta
+Pasar Fase (timeout = false) (Ataque -> Movimiento -> Terminar turno) //Verificar si se gano una carta // se manda timeout cuando el jugador no mivio y se paso automaticamente
 GanarCarta (jugador, carta) [backend]
 partidaFinalizada [backend]
+pausarPartida // pausa y despausa la partida // solo el lider la puede usar
 
 *En La Asignacion (inicio del turno)
 CanjearCarta (cartaA, cartaB, cartaC)
@@ -198,4 +204,33 @@ objetivo secreto
             "bonusTroops": 5
         }
     ]
+}
+
+------------------------ Validaciones TODO -----------------------------
+
+
+terinar las retas de los eventos
+
+hacer un util que cree un json
+hacer un util que sea para obtener y otro para guardar en mongo db (por ahora usar un json en momoria)
+empezar a hacer las funciones de validacion en paralelo con las rutas de los eventos
+hacer un util que sea hacer un evento y que se guarde en la db
+
+
+
+--------------------------------------
+
+login
+
+{
+    "token": "dfgdf",
+    "username": "Loren",
+    "password": "123"
+}
+
+event
+
+{
+    "name": "newLobby",
+    "params": ""
 }

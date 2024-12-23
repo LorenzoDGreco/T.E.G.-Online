@@ -2,22 +2,34 @@
 
     
 
-    <div class="board order-2 col-9">
+    <div class="board">
         <img src="/assets/board.webp" alt="Mapa">
     </div>
     
-    <div class="hub-players order-1 col-9 d-flex">
-        @for(player of players; track player.id; let index = $index){
-            <div class="player" [id]="'player-'+index">
-                <p>Nombre, imagen, cartas</p>
-            </div>
+    <div class="hub-players d-flex flex-wrap justify-content-center">
+        @for(player of players; track player.id; let index = $index) {
+          <div class="p-1 h-100" [style.width.%]="100 / players.length"  style="width: 12.5%;" [id]="'player-'+player.id">
+                <div class="card w-100 h-100 p-1 d-flex flex-row" [style.background-color]="colors[player.id].color">
+                    <div class="h-100">
+                        <img [src]="colors[player.id].photo" class="h-100" alt="">
+                    </div>
+                    <div class="d-flex flex-column ps-3 flex-wrap justify-content-around w-75">
+                        <div>Pedro Sanchez</div>
+                        <div>■ 3   ■ 25</div>
+                    </div>
+                </div>
+          </div>
         }
     </div>
 
-    <div class="chat order-3 col-4">
+    <div class="chat">
         <!-- @for (item of items; track $index) {} -->
         <div class="historic-message">
-            <p>asdasdas</p>
+            <p>asdasdas</p><p>asdasdas</p><p>asdasdas</p><p>asdasdas</p><p>asdasdas</p><p>asdasdas</p><p>asdasdas</p><p>asdasdas</p><p>asdasdas</p><p>asdasdas</p><p>asdasdas</p><p>asdasdas</p><p>asdasdas</p><p>asdasdas</p><p>asdasdas</p><p>asdasdas</p><p>asdasdas</p><p>asdasdas</p><p>asdasdas</p><p>asdasdas</p><p>asdasdas</p><p>asdasdas</p><p>asdasdas</p><p>asdasdas</p><p>asdasdas</p><p>asdasdas</p><p>asdasdas</p><p>asdasdas</p><p>asdasdas</p><p>asdasdas</p><p>asdasdas</p><p>asdasdas</p>
+        </div>
+        <div class="chat-input">
+            <input type="text">
+            <button>Send</button>
         </div>
     </div>
 

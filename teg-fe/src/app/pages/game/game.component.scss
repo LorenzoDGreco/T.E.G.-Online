@@ -1,26 +1,73 @@
-.overlay{
-    width: 100vw;
+.overlay {
+    display: grid;
+    grid-template-areas: 
+    "hub-players chat"
+    "board       chat";
     height: 100vh;
-    // display: flex;
-    // justify-content: center;
-    // align-items: center;
 }
 
-.player {
-    background-color: aqua;
-    border: solid 2px;
-    padding: 2rem 10rem;
-    // width: 35%;
-}
-
-.chat {
-    background-color: beige;
-    border: solid 2px;
-    padding: 15rem 5rem;
-    // width: 30%;
+.hub-players {
+    grid-area: hub-players;
+    height: 7vh;
+    width: 85vw;
 }
 
 .board {
-    // width: 70%;
-    
+    grid-area: board;
+    background-color: #e9ecef;
+    padding: 0;
+    overflow-y: hidden;
+    width: 85vw;
+    height: 93vh;
+}
+
+.board img {
+    height: 100%;
+    width: 100%;
+}
+
+.chat {
+    width: 15vw;
+    height: 100vh;
+    grid-area: chat;
+    background-color: #dee2e6;
+    display: flex;
+    flex-direction: column;
+}
+
+.historic-message {
+    flex: 1;
+    overflow-y: auto;
+}
+
+.chat-input {
+    background-color: #ffffff;
+    padding: 0.5rem;
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.chat-input input {
+    flex: 1;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+.chat-input button {
+    padding: 0.5rem 1rem;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.chat-input button:hover {
+    background-color: #0056b3;
 }
